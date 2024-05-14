@@ -1,10 +1,10 @@
 # ＜バラツキの対処法＞
 # ＜The method for bariance＞
 
-#  バラツキを厳密に扱い、確率を正しく演算するための数学、分布演算を実現するツール
+#  バラツキを厳密に扱い、確率を正しく演算するための数学、分布演算を実現するツール（改良版）
 
 # Mathematical method to handle dispersion strictly and calculate probability correctly, 
-#       that is, a tool that realizes distribution calculations.
+#       that is, a tool that realizes distribution calculations, new virsion.
 
 　技術評論社“バラツキの対処法 ～品質を最大限に引き出す数学～”の考え方を実現する改良版ツールです。
 
