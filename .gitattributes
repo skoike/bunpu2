@@ -1,0 +1,4 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+bunpu2_win10.exe filter=lfs diff=lfs merge=lfs -text
+bunpu2_win11.exe filter=lfs diff=lfs merge=lfs -text
