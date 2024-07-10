@@ -28,21 +28,21 @@ which is not available in existing numerical calculations.
 Here, I will release the software that I created after publishing "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)"
 Software released before publication is available at the address below.
 
-https://github.com/skoike/bunpu
+- https://github.com/skoike/bunpu
 
 ソフト比較と使い方/Software comparison and how to use
-https://www.youtube.com/watch?v=pnTQOt4HYwg
+- https://www.youtube.com/watch?v=pnTQOt4HYwg
 
 バラツキの対処法、概要と応用例/How to deal with variance, overview and application examples
-https://www.youtube.com/watch?v=YHU92qjDdDA&t=0s  
+- https://www.youtube.com/watch?v=YHU92qjDdDA&t=0s  
 
 バラツキの対処法、数学における位置づけ/How to deal with variance, Position in mathematics
-https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
+-https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
 
 ソフトの置き場/Software storage
-https://github.com/skoike/bunpu
-https://github.com/skoike/bunpu2
-https://github.com/skoike/bunpu3
+- https://github.com/skoike/bunpu
+- https://github.com/skoike/bunpu2
+- https://github.com/skoike/bunpu3
 
 
 出版前ソフトとの違いは以下の点
