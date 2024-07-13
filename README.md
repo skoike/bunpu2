@@ -37,12 +37,23 @@ Software released before publication is available at the address below.
 - https://www.youtube.com/watch?v=YHU92qjDdDA&t=0s  
 
 バラツキの対処法、数学における位置づけ/How to deal with variance, Position in mathematics
--https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
+- https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
 
 ソフトの置き場/Software storage
+
+ウィンドウズで立ち上がるインターフェースを持ち、プルダウンメニューで演算を指定する
+It has a Windows-based interface and allows you to specify operations using pull-down menus.
 - https://github.com/skoike/bunpu
+
+ウィンドウズで立ち上がるインターフェースを持ち、ユーザーが作ったスクリプトを実行する
+It has a Windows-based interface and runs user-created scripts.
 - https://github.com/skoike/bunpu2
+
+ 　pythonのライブラリとして機能する
+ 　It works as a python library
 - https://github.com/skoike/bunpu3
+
+
 
 
 出版前ソフトとの違いは以下の点
