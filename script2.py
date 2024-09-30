@@ -18,10 +18,10 @@
 
 #v1=bunpu()
 #最小値、最大値、平均値、標準偏差、生成ファイル名
-v1.bunpu_gene([10],[50],[40],[5],[100],'v1')
+v1.bunpu_gene([10],[50],[40],[5],[100])
 
 #z1=bunpu()
-z1.bunpu_gene([5],[60],[20],[5],[100],'z1')
+z1.bunpu_gene([5],[60],[20],[5],[100])
 
 #ファイルのデータから1D分布を作成する
 #Create a distribution from data in a file
@@ -85,7 +85,7 @@ w2.bunpu_percent(['w22percent','unit'],[5000],[10000],[1],1,1)
 #分布の比較
 #w1がw3を上回る確率を求める
 #
-w1.bunpu_percent2(w3,['w2percent2','unit'],[1],1,1)
+w1.bunpu_percent2(w3,['w2percent2','unit'],[1],1)
 
 
 #2D
@@ -93,12 +93,12 @@ w1.bunpu_percent2(w3,['w2percent2','unit'],[1],1,1)
 #Create a distribution from parametar(min,max,mean,)
 
 #z2=bunpu()
-z2.bunpu_gene([10,8],[50,60],[25,40],[4,5],[100,100],'z2')
+z2.bunpu_gene([10,8],[50,60],[25,40],[4,5],[100,100])
 z2.bunpu_graph('z2')
 meanz2 = z2.bunpu_mean('z2mean',1,1)
 print('z2mean',meanz2)
 #y2=bunpu()
-y2.bunpu_gene([30,10],[80,70],[55,40],[4,5],[100,100],'z2')
+y2.bunpu_gene([30,10],[80,70],[55,40],[4,5],[100,100])
 
 
 #無視する行、抽出する列、分布の分割数を指定して2D分布を求める
@@ -132,7 +132,7 @@ print('z22percent',pc22)
 #分布の比較
 #分布z2が分布y2に対してベクトル[1,0]の方向で90°の範囲に上回る確率を求める。
 #（分布y2をベクトル[1,0]の方向で90°の範囲に累積した累積分布とz2の確率値の積分布）
-pc22 = z2.bunpu_percent2(y2,['z2percent2','unit'],[1,0,90])
+pc22 = z2.bunpu_percent2(y2,['z2percent2','unit'],[1,0,90],1)
 print('z2percent2',pc22)
     
     
@@ -141,12 +141,12 @@ print('z2percent2',pc22)
 #Create a distribution from parametar(min,max,mean,)
 
 #x3=bunpu()
-x3.bunpu_gene([10,8,11],[50,60,55],[20,40,30],[4,5,4],[20,20,20],'x3')
+x3.bunpu_gene([10,8,11],[50,60,55],[20,40,30],[4,5,4],[20,20,20])
 x3.bunpu_graph('x3')
 #y3=bunpu()
-y3.bunpu_gene([-2,-10,-5],[10,5,5],[6,-6,1],[2,2,2],[20,20,20],'y3')
+y3.bunpu_gene([-2,-10,-5],[10,5,5],[6,-6,1],[2,2,2],[20,20,20])
 #z3=bunpu()
-z3.bunpu_gene([-10,-10,-20],[-60,-50,-70],[-30,-38,-40],[2,2,2],[20,20,20],'z3')
+z3.bunpu_gene([-10,-10,-20],[-60,-50,-70],[-30,-38,-40],[2,2,2],[20,20,20])
 #breakpoint()
 meanx3 = x3.bunpu_mean('x3mean',1,1)
 print('x3mean',meanx3)
@@ -180,7 +180,7 @@ print('x32percent',pc32)
 #分布の比較
 #分布w7が分布w8に対してベクトル[1,0.1,0.1]の方向で上下60°左右60°の範囲に上回る確率を求める。
 #（分布w8をベクトル[1,0.1,0.1]の方向で上下60°左右60°の範囲に累積した累積分布とw7の確率値の積分布）
-pc7 = w7.bunpu_percent2(w8,['w7percent2','unit'],[1,0.1,0.1,60,60],1,1)
+pc7 = w7.bunpu_percent2(w8,['w7percent2','unit'],[1,0.1,0.1,60,60],1)
 print('w7percent2',pc7)
 
 

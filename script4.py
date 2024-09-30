@@ -1,3 +1,4 @@
+#bunpu2用のシミュレーション
 #空間を移動するターゲットをミサイルが迎撃する
 #ミサイルは位置と速度にバラツキを与える。
 #発射時に弾道起動を飛行して、500m以内でターゲットを認識して自律制御にて追尾する
@@ -7,10 +8,11 @@
 #Fly the ballistic launch when launching, recognize the target within 500m and track it under autonomous control
 
 dlt = 0.1
-test=15+dlt*5*(2+dlt)
-#kakudo=37*np.pi/180#方位1 Aiming direction 1
-kakudo=41*np.pi/180#方位2 Aiming direction 2
-houi= 40*np.pi/180
+#est=15+dlt*5*(2+dlt)
+kakudo=37*np.pi/180#方位1 Aiming direction 1
+#kakudo=41*np.pi/180#方位2 Aiming direction 2
+#houi= 40*np.pi/180
+houi= 50*np.pi/180
 vt0=300
 vx0=vt0*np.cos(kakudo)*np.cos(houi)#m/s
 vy0=vt0*np.cos(kakudo)*np.sin(houi)#m/s
@@ -23,26 +25,26 @@ vzmin=vz0-3
 vxmax=vx0+7
 vymax=vy0+5
 vzmax=vz0+5
-#v0.bunpu_gene([vx0-5,vy0-3,vz0-3],[vx0+7,vy0+5,vz0+5],[vx0,vy0,vz0],[1.0,0.8,0.8],[ms,ms,ms],'v3')
-v0.bunpu_gene([vxmin,vymin,vzmin],[vxmax,vymax,vzmax],[vx0,vy0,vz0],[1.0,0.8,0.8],[ms,ms,ms],'v3')
-breakpoint()
+#v0.bunpu_gene([vx0-5,vy0-3,vz0-3],[vx0+7,vy0+5,vz0+5],[vx0,vy0,vz0],[1.0,0.8,0.8],[ms,ms,ms])
+v0.bunpu_gene([vxmin,vymin,vzmin],[vxmax,vymax,vzmax],[vx0,vy0,vz0],[1.0,0.8,0.8],[ms,ms,ms])
 v0.bunpu_graph('3d v')
 v0.bunpu_file('3d v')
 #x0初期位置のバラツキx0: Initial position variation
-x0.bunpu_gene([-10,-5,-5],[5,7,5],[0,0,0],[1.0,0.8,0.5],[ms,ms,ms],'x3')
+x0.bunpu_gene([-10,-5,-5],[5,7,5],[0,0,0],[1.0,0.8,0.5],[ms,ms,ms])
 x0.bunpu_graph('3d x0')
 #幅のない分布 Widthless distribution
 #a0 = bunpu()
 a0.vector_gene([0,0,-9.8])
 #ターゲットの検出誤差 Target detection error
-#xy.bunpu_gene([-20.0,-20.0,-30.0],[20,20,25],[0,0,0],[4.1,5.1,5.5],[5,5,5],'xtg3')
-xy.bunpu_gene([-20.0,-20.0,-30.0],[20,20,25],[0,0,0],[4.1,5.1,5.5],[ms,ms,ms],'xtg3')
+#xy.bunpu_gene([-20.0,-20.0,-30.0],[20,20,25],[0,0,0],[4.1,5.1,5.5],[5,5,5])
+xy.bunpu_gene([-20.0,-20.0,-30.0],[20,20,25],[0,0,0],[4.1,5.1,5.5],[ms,ms,ms])
 #検出誤差 detection error
 minidist0=[0]
+simulink=[]
 contact=[]
 ditect = bunpu()
-#ditect.bunpu_gene([-2,-2,-3],[2,2,2],[0,0,0],[0.3,0.2,0.5],[5,5,5],'ditect')
-ditect.bunpu_gene([-2,-2,-3],[2,2,2],[0,0,0],[0.3,0.2,0.5],[ms,ms,ms],'ditect')
+#ditect.bunpu_gene([-2,-2,-3],[2,2,2],[0,0,0],[0.3,0.2,0.5],[5,5,5])
+ditect.bunpu_gene([-2,-2,-3],[2,2,2],[0,0,0],[0.3,0.2,0.5],[ms,ms,ms])
 #a = bunpu()
 a = a0
 v = v0
@@ -50,7 +52,7 @@ x = x0
 amin = -50
 amax = 50
 fname='s_amax'
-amx.bunpu_gene([20,30,20],[50,60,50],[30,40,30],[3,2,2],[ms,ms,ms],'a1')
+amx.bunpu_gene([20,30,20],[50,60,50],[30,40,30],[3,2,2],[ms,ms,ms])
 amx.bunpu_graph(fname)#34
 #ターゲットの初期位置 Initial position of target
 xtg0=[3000,1000,2000]
@@ -67,8 +69,22 @@ contact0=20
 #dists=700
 dists=500.0#制御あり
 #dists=0#制御なし
+#ターゲットの前回値
+#lastxy=bunpu()
+#lastxy=copy.deepcopy(xy)
+lastxy=xy
+#nv = v0.div[0]*v0.div[1]*v0.div[2]#8/14この計算ができない
+nv=ms*ms*ms
+#nx = x0.div[0]*x0.div[1]*x0.div[2]
+nx=ms*ms*ms
+#nxy = xy.div[0]*xy.div[1]*xy.div[2]
+nxy=ms*ms*ms
+#距離の初期値（最も近い距離を求める）
+xrelmin=3000*np.ones((1,nv,nx,nxy))
+xrelmin[0][0][0]=40000
+
 #フィードバック制御のゲイン
-gain=200000
+gain=1000
 k2 = np.zeros(3)
 cfflag=0
 shw=1
@@ -93,13 +109,10 @@ for t in range(tm):
     #integral operator,x=∫x*dt
     #積分演算子、x=∫x*dt
     x=pos.bunpu_simu_integral([v],dlt,shw)
-    
-    if t>0:
-        x.timeline=x0.timeline
-    
     v0=v
     a0=acc
     a=acc
+    #rel=bunpu()
     xrel=ypos.bunpu_simu_sub(x)
     filename='cont_prb'
     flagx = 0
@@ -107,6 +120,11 @@ for t in range(tm):
     minidist=xrel.bunpu_simu_prb(contact0,minidist0,flagx,t,tm,filename)
     minidist0 = minidist
     distx = xrel.bunpu_simu_dist()
+    if t>0:
+        x.timeline=x0.timeline
+        ddistx = lastdistx-distx#１ステップの接近距離
+    #lastdistx = copy.deepcopy(distx)
+    lastdistx = distx
     #ターゲットとの距離判定結果
     comp = xrel.bunpu_simu_comp([dists],0)
     #制御開始フラグ
@@ -114,19 +132,26 @@ for t in range(tm):
     if condc>0:
         distv = vel.bunpu_simu_dist()
         #ターゲット速度
+        #vrtualv0 = bunpu()
+        #vrtualv = bunpu()
         virtualv0 = ypos.bunpu_simu_sub(lasty)
-        virtualv1 = distx/(dlt*distv)
-        virtualv2 = [virtualv1,virtualv1,virtualv1]
-        virtualv = virtualv0.bunpu_simu_prd(virtualv2)
+        vdistx = distx/ddistx
+        vdistlist = [vdistx,vdistx,vdistx]
+        #virtualv = virtualv0.bunpu_simu_prd(np.array([distx/ddistx,distx/ddistx,distx/ddistx]))
+        virtualv = virtualv0.bunpu_simu_prd(vdistlist)
         #ターゲット仮想位置
+        #vrtualy = bunpu()
         virtualy = ypos.bunpu_simu_add(virtualv)
         #仮想ターゲットとの相対位置
+        #vrtualrelx = bunpu()
         virtualrelx = virtualy.bunpu_simu_sub(pos)
         vdistx = virtualrelx.bunpu_simu_dist()
         #外積による制御量演算
+        #op1 = bunpu()
         op1 = vel.bunpu_simu_outprod(virtualrelx)
+        #op2 = bunpu()
         op2 = op1.bunpu_simu_outprod(vel)
-        k0 = gain/(distv*vdistx**3)
+        k0 = gain/(distv*vdistx**2)
         k = [k0,k0,k0]#距離が遠いほど小さい
         
         if cfflag == 0:
@@ -140,7 +165,7 @@ for t in range(tm):
         lastop = op2
         a01 = a00.bunpu_simu_comp_prd(comp)#94
         limit0 = [200,200,200]
-        a0 = a01.bunpu_simu_limit(limit0)#96
+        a0 = a01.bunpu_simu_limit(limit0,0)#96
     print(t)#
     cond0=xrelmin>distx#98
     #最接近距離判定
@@ -148,13 +173,13 @@ for t in range(tm):
     cond2=cond0.astype(int)
     xrelmin=xrelmin*cond1+distx*cond2
     gname='timeline_v1'
-    x.bunpu_simu_graph(ypos,t,tm,gname,1)
+    simulink=x.bunpu_simu_graph(ypos,simulink,t,tm,dlt,gname,1,1)
     #ターゲットとの位置分布（20m以内となる逐次確率を求める）
     if t >= 110:
         x.bunpu_simu_readout()
         ypos.bunpu_simu_readout()
         tname='target_'+t
-        x.bunpu_twin_graph(ypos,tname,contact0,1)
+        x.bunpu_twin_graph(ypos,tname,contact0)
     #ターゲットの前回値
     lasty = ypos
     #ループの終わり

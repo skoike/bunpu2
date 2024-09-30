@@ -14,15 +14,16 @@ kbt.bunpu_data('kmbtime.csv','kmbtime',1,[1],[300])
 cday.bunpu_data('cday.csv','cday',1,[1],[300])#無視する行、抽出する列、分布の分割数を指定して分布を求める
 #(1)の演算
 #Calculation of (1)
-daybtime=kbt.bunpu_division(kbd,[300],0,0)#分割、相関係数、面積表示 Division, correlation coefficient, area display
+daybtime=kbt.bunpu_division(kbd,[300])#分割、相関係数、面積表示 Division, correlation coefficient, area display
 #(2)の演算
 #Calculation of (2)
-dayb2time=daybtime.bunpu_add(daybtime,[300],0,0)
-dayb4time=dayb2time.bunpu_add(dayb2time,[300],0,0)
-dayb8time=dayb4time.bunpu_add(dayb4time,[300],0,0)
+dayb2time=daybtime.bunpu_add(daybtime,[300])
+dayb4time=dayb2time.bunpu_add(dayb2time,[300])
+dayb8time=dayb4time.bunpu_add(dayb4time,[300])
 #(3)の確率演算
 #Calculation of (3)
-cday.bunpu_percent2(dayb8time,'day',[1],0)
+kakurt=cday.bunpu_percent2(dayb8time,['memory','day'],[1],1)
+print('kakuritsu',kakurt)
 #メモリーが１回記録される日数分布
 #Distribution of days in which memory is recorded once
 daybtime.bunpu_graph('daybtime')

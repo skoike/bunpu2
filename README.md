@@ -10,17 +10,18 @@
 
  This is an improved tool that realizes the idea of Gijutsu Hyoronsha's "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)"
 
-　既存の数値演算ではバラツキを正しく扱うことができないので、見えない誤差が残ります。
-標準偏差は、正規分布以外では正しい確率を保証しないし、一般的なバラツキが正規分布に従うことなどありません。
-モンテカルロシミュレーションや確率過程も同様に一般的なバラツキに適用すると誤差があります。特にバラツキを持つ要素が複数ある場合には誤差が拡大します。
-バラツキの対処法は、そういった既存の数値演算に無い、バラツキの分布形状を演算結果に厳密に反映させる分布演算を扱う環境を提供します。
+　幾つかのパラメータがバラツキを持ち、その分布形状（ヒストグラムなど）が分っていれば、演算結果の分布形状を厳密に求めることができます。それによって、はじめて現象や設計の成立確率を求めることができます。そのための演算ツールを提供します。
+分布形状が明確でないがデータがある場合でも、このツールでデータを分布（ヒストグラムベースのカーネル分布）に変換することができますが、データが少ないと分布形状に誤差が残ります。その誤差は既存のデータを扱う手法で、少ないデータを扱う場合と同程度です。標準偏差などの正規分布や関数分布を前提とする手法は、そもそも実際のデータが持つ分布形状の特徴を反映できないので誤差を持ちます。正規分布とかけ離れた分布の場合は大きな誤差になり、モデルのなかにそのようなバラツキがいくつかあればその誤差は更に拡大します。つまり品質を改善するためには、様々なパタメータの分布形状を正しく把握して、その分布形状を考慮できるモデル設計が必要だと考えます。この手法は、演算過程のすべてのパラメータを分布として把握することができるので、様々な現象を確率値として演算できます。
 
-Existing numerical calculations cannot handle variance correctly, so invisible errors remain.
-The standard deviation does not guarantee the correct probability for anything other than a normal distribution, and the general variation does not follow a normal distribution.
-Monte Carlo simulations and stochastic processes similarly have errors when applied to general variance. 
-Especially when there are multiple elements with variance, the error increases.
-This variation handling method provides an environment for handling distribution calculations that strictly reflects the distribution shape of the variation in the calculation results, 
-which is not available in existing numerical calculations.
+　この手法の欠点は、分布をマトリックスとして演算するので、分布を細かく分割（サンプリング）したり、多次元化や多数の分布を扱うシミュレーションを行うとメモリー使用量が膨大になってメモリーエラーを起こす可能性があります。かと言って分布の分割を荒くすると、結果の誤差が大きくなるので、エラーを起こさない範囲で分割を細かくする必要があります。このbunpu2のソフトよりbunpu3の方がメモリーエラーを起こしにくく大きいマトリックスを扱えます。bunpu3はpythonのライブラリとして機能するので、そちらの利用を推奨します。
+今後、様々な並列処理などを活用して大きなマトリックスを扱えるように改善したいと思いますが、みなさんもメモリーに余裕があるパソコンを利用してください。
+
+ If several parameters have variations and the distribution shape (histogram, etc.) is known, the distribution shape of the calculation result can be precisely calculated. Only then can we determine the probability of a phenomenon or design occurring. I provide a calculation tool for this purpose.
+Even if the distribution shape is unclear but there is data, this tool can convert the data into a distribution (histogram-based kernel distribution), but if there is little data, errors will remain in the distribution shape. The errors are the same as when using existing methods that handle data and handle little data. Methods that assume normal distributions such as standard deviation or function distributions have errors because they cannot reflect the characteristics of the distribution shape of the actual data. If the shape of distribution is far from normal distribution, the error will be large, and if there are several such variations in the model, the error will be even greater. In other words, in order to improve quality, I believe that it is necessary to correctly grasp the distribution shapes of various parameters and design a model that can take that distribution shape into account. This method can grasp all parameters in the calculation process as distributions, so it can calculate various phenomena as probability values.
+
+The drawback of this method is that it calculates the distribution as a matrix, so if you divide the distribution finely or perform a simulation that handles multi-dimensionality or a large number of distributions, the memory usage can become enormous, which can lead to memory errors. However, if the distribution is divided too roughly, the error in the results will increase, so it is necessary to divide it finely as long as errors do not occur. bunpu3 is less likely to cause memory errors and can handle larger matrices than this bunpu2 software. Since bunpu3 functions as a python library, we recommend using it.
+In the future, we would like to improve it so that it can handle large matrices by utilizing various parallel processing methods, but we recommend that you use a computer with plenty of memory.
+
 
 　ここでは“バラツキの対処法 ～品質を最大限に引き出す数学～”の出版以降に作成したソフトを公開します。
 出版前に公開したソフトは下記のアドレスで公開しています。
@@ -37,18 +38,27 @@ Software released before publication is available at the address below.
 - https://www.youtube.com/watch?v=YHU92qjDdDA&t=0s  
 
 バラツキの対処法、数学における位置づけ/How to deal with variance, Position in mathematics
--https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
+- https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
 
 ソフトの置き場/Software storage
+
+ウィンドウズで立ち上がるインターフェースを持ち、プルダウンメニューで演算を指定する
+It has a Windows-based interface and allows you to specify operations using pull-down menus.
 - https://github.com/skoike/bunpu
+
+ウィンドウズで立ち上がるインターフェースを持ち、ユーザーが作ったスクリプトを実行する
+It has a Windows-based interface and runs user-created scripts.
 - https://github.com/skoike/bunpu2
+
+pythonのライブラリとして機能する
+It works as a python library
 - https://github.com/skoike/bunpu3
 
 
 出版前ソフトとの違いは以下の点
 
 様々なシミュレーションを実現するために、ユーザーが作成したpythonライクなプログラムを実行するように作り直しました。出版時のソフトはプルダウンメニューで関数を選択して実行するものでしたが、その関数をプログラムとしてユーザーが直接記述します。関数の使い方は変えていませんが、アルゴリズムを抜本的に改善しました。
-関数のアルゴリズムで多用していたループ処理をマトリックス処理に置き換えて再構築、多少の高速化と、今後GPUでの並列処理を導入する為の準備を行いました。
+関数のアルゴリズムで多用していたループ処理をマトリックス処理に置き換えて再構築、多少の高速化を行いました。
 シミュレーションは新アルゴリズムによって多次元(１次元〜３次元)、多階積分をユーザーが関数プログラムを作成することで実現できます。
 （現状は線積分までで、場の解析など面積分は今後機能を追加、マトリックスの巨大化によるメモリーエラーが課題）
 　いずれのソフトを使うにしても、技術評論社の書籍“バラツキの対処法 ～品質を最大限に引き出す数学～”を理解していることを前提としています。
