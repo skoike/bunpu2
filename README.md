@@ -1,14 +1,22 @@
 # ＜バラツキの対処法＞
 # ＜The method for bariance＞
 
-#  バラツキを厳密に扱い、確率を正しく演算するための数学、分布演算を実現するツール
+#  バラツキを扱う分布数学を提供する
 
-# Mathematical method to handle dispersion strictly and calculate probability correctly, 
-#       that is, a tool that realizes distribution calculations.
+# Providing distribution mathematics to handle variance 
 
 　技術評論社“バラツキの対処法 ～品質を最大限に引き出す数学～”の考え方を実現する改良版ツールです。
 
  This is an improved tool that realizes the idea of Gijutsu Hyoronsha's "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)"
+
+バラツキを関数近似しない、現実データのありのままの形状をした分布としてとらえ、その分布を演算要素として、分布のモデル化や、分布相互の関係を確率として見える化するツールの統合環境。
+分布形状の違いによる誤差は大きく、品質や性能をスポイルする原因となっている。
+そのような分布形状に隠された情報を正確に抽出するために、分布形状を正しく扱い、分布形状を考慮した様々な確率計算を提供する。
+
+This is an integrated environment of tools that treats variance as a distribution that has the natural shape of real data, without using function approximations, and uses that distribution as a calculation element to model the distribution and visualize the relationships between distributions as probabilities.
+Differences in distribution shapes can cause large errors, which can spoil quality and performance.
+To accurately extract information hidden in such distribution shapes, this tool correctly handles the distribution shape and provides various probability calculations that take the distribution shape into account.
+
 
 　幾つかのパラメータがバラツキを持ち、その分布形状（ヒストグラムなど）が分っていれば、演算結果の分布形状を厳密に求めることができます。それによって、はじめて現象や設計の成立確率を求めることができます。そのための演算ツールを提供します。
 分布形状が明確でないがデータがある場合でも、このツールでデータを分布（ヒストグラムベースのカーネル分布）に変換することができますが、データが少ないと分布形状に誤差が残ります。その誤差は既存のデータを扱う手法で、少ないデータを扱う場合と同程度です。標準偏差などの正規分布や関数分布を前提とする手法は、そもそも実際のデータが持つ分布形状の特徴を反映できないので誤差を持ちます。正規分布とかけ離れた分布の場合は大きな誤差になり、モデルのなかにそのようなバラツキがいくつかあればその誤差は更に拡大します。つまり品質を改善するためには、様々なパタメータの分布形状を正しく把握して、その分布形状を考慮できるモデル設計が必要だと考えます。この手法は、演算過程のすべてのパラメータを分布として把握することができるので、様々な現象を確率値として演算できます。
