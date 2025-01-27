@@ -173,7 +173,7 @@ for t in range(tm):
     cond2=cond0.astype(int)
     xrelmin=xrelmin*cond1+distx*cond2
     gname='timeline_v1'
-    simulink=x.bunpu_simu_graph(ypos,simulink,t,tm,dlt,gname,1,1)
+    simulink=x.bunpu_simu_graph(ypos,simulink,t,tm,dlt,gname,3,1)
     #ターゲットとの位置分布（20m以内となる逐次確率を求める）
     if t >= 110:
         x.bunpu_simu_readout()

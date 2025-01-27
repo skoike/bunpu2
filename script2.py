@@ -88,6 +88,24 @@ w2.bunpu_percent(['w22percent','unit'],[5000],[10000],[1],1,1)
 w1.bunpu_percent2(w3,['w2percent2','unit'],[1],1)
 
 
+x1=bunpu()
+x1.bunpu_gene([50],[300],[130],[40.0],[100],gegg=[0,0],volume=1000)
+x1.bunpu_graph('x1')
+y1=bunpu()
+y1.bunpu_gene([100],[350],[290],[50.0],[100],gegg=[0,0],volume=1500)
+y1.bunpu_graph('y1')
+
+#接近
+
+x1.bunpu_twin_graph(y1,'contact1',50)
+#需給のバランス、
+
+x1.bunpu_balance(y1,'balance1')
+
+event=np.append(event,time.time())
+print('1D ',event[-1]-event[-2])
+
+
 #2D
 #諸元（最小値、最大値、平均値、標準偏差）をして2D分布を作成
 #Create a distribution from parametar(min,max,mean,)
@@ -98,7 +116,7 @@ z2.bunpu_graph('z2')
 meanz2 = z2.bunpu_mean('z2mean',1,1)
 print('z2mean',meanz2)
 #y2=bunpu()
-y2.bunpu_gene([30,10],[80,70],[55,40],[4,5],[100,100])
+y2.bunpu_gene([20,10],[70,70],[45,40],[5,6],[100,100])
 
 
 #無視する行、抽出する列、分布の分割数を指定して2D分布を求める
@@ -136,6 +154,11 @@ pc22 = z2.bunpu_percent2(y2,['z2percent2','unit'],[1,0,90],1)
 print('z2percent2',pc22)
     
     
+
+#接近
+
+z2.bunpu_twin_graph(y2,'contact2',20)
+
 #3D
 #諸元（最小値、最大値、平均値、標準偏差）をして3D分布を作成
 #Create a distribution from parametar(min,max,mean,)
@@ -182,6 +205,17 @@ print('x32percent',pc32)
 #（分布w8をベクトル[1,0.1,0.1]の方向で上下60°左右60°の範囲に累積した累積分布とw7の確率値の積分布）
 pc7 = w7.bunpu_percent2(w8,['w7percent2','unit'],[1,0.1,0.1,60,60],1)
 print('w7percent2',pc7)
+
+
+x4=bunpu()
+x4.bunpu_gene([20,25,20],[80,110,130],[40,80,50],[10,15,20],[20,20,20])
+x4.bunpu_graph('x4')
+x5=bunpu()
+x5.bunpu_gene([5,4,6],[70,80,65],[30,50,30],[10,10,8],[20,20,20])
+x5.bunpu_graph('x5')
+#接近
+
+x5.bunpu_twin_graph(x4,'contact3',10)
 
 
 print('finish')

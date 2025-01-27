@@ -7,29 +7,92 @@
 
 　技術評論社“バラツキの対処法 ～品質を最大限に引き出す数学～”の考え方を実現する改良版ツールです。
 
- This is an improved tool that realizes the idea of Gijutsu Hyoronsha's "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)"
+ This is an improved tool that realizes the idea of "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)" published by Gijutsu Hyoronsha.
+
 
 バラツキを関数近似しない、現実データのありのままの形状をした分布としてとらえ、その分布を演算要素として、分布のモデル化や、分布相互の関係を確率として見える化するツールの統合環境。
-分布形状の違いによる誤差は大きく、品質や性能をスポイルする原因となっている。
+分布形状の違いによる誤差は大きく、品質や性能をスポイルする原因となっている。（詳細は下記動画を参照ください）
 そのような分布形状に隠された情報を正確に抽出するために、分布形状を正しく扱い、分布形状を考慮した様々な確率計算を提供する。
 
 This is an integrated environment of tools that treats variance as a distribution that has the natural shape of real data, without using function approximations, and uses that distribution as a calculation element to model the distribution and visualize the relationships between distributions as probabilities.
-Differences in distribution shapes can cause large errors, which can spoil quality and performance.
+Differences in distribution shapes can cause large errors, which can spoil quality and performance.(Please refer to the following video for details.)
 To accurately extract information hidden in such distribution shapes, this tool correctly handles the distribution shape and provides various probability calculations that take the distribution shape into account.
 
+# 説明動画/Explanation Video
 
-　幾つかのパラメータがバラツキを持ち、その分布形状（ヒストグラムなど）が分っていれば、演算結果の分布形状を厳密に求めることができます。それによって、はじめて現象や設計の成立確率を求めることができます。そのための演算ツールを提供します。
-分布形状が明確でないがデータがある場合でも、このツールでデータを分布（ヒストグラムベースのカーネル分布）に変換することができますが、データが少ないと分布形状に誤差が残ります。その誤差は既存のデータを扱う手法で、少ないデータを扱う場合と同程度です。標準偏差などの正規分布や関数分布を前提とする手法は、そもそも実際のデータが持つ分布形状の特徴を反映できないので誤差を持ちます。正規分布とかけ離れた分布の場合は大きな誤差になり、モデルのなかにそのようなバラツキがいくつかあればその誤差は更に拡大します。つまり品質を改善するためには、様々なパタメータの分布形状を正しく把握して、その分布形状を考慮できるモデル設計が必要だと考えます。この手法は、演算過程のすべてのパラメータを分布として把握することができるので、様々な現象を確率値として演算できます。
+このソフトが実現する技術の内容/The technology realized by this software
+- https://www.youtube.com/watch?v=_YVu-couIDc
 
-　この手法の欠点は、分布をマトリックスとして演算するので、分布を細かく分割（サンプリング）したり、多次元化や多数の分布を扱うシミュレーションを行うとメモリー使用量が膨大になってメモリーエラーを起こす可能性があります。かと言って分布の分割を荒くすると、結果の誤差が大きくなるので、エラーを起こさない範囲で分割を細かくする必要があります。このbunpu2のソフトよりbunpu3の方がメモリーエラーを起こしにくく大きいマトリックスを扱えます。bunpu3はpythonのライブラリとして機能するので、そちらの利用を推奨します。
+ソフト比較と使い方/Software comparison and how to use
+- https://www.youtube.com/watch?v=pnTQOt4HYwg
+
+バラツキの対処法、数学における位置づけ/How to deal with variance, Position in mathematics
+- https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
+
+バラツキの対処法、概要と応用例/How to deal with variance, overview and application examples
+- https://www.youtube.com/watch?v=YHU92qjDdDA&t=0s  
+
+# 使い方/way to use
+　
+Windows10、Windows11それぞれの環境でコンパイルしたものを用意しました。
+現状では起動や演算に時間がかかるので、お待ちください。
+
+I have prepared versions compiled for Windows10 and Windows11 environments.
+Currently, it takes time to start up and calculate, so please wait.
+
+- Windows10用→bunpu2_win10.exe
+- Windows11用→bunpu2_win11.exe
+
+その他csvファイルがありますが、これは上記ツールで練習用に使うダミーデータです。
+使い方の動画を参照ください。
+
+There are some csv files, this is dummy data used for practice with the above tools.
+Please refer to the video on how to use it.
+
+このソフトを起動すると表示窓とボタンが２つの小さなウィンドウが立ち上がります。上のボタンでスクリプトを選択して、下のボタンでスクリプトの処理が実行されます。
+実行過程はコマンドプロンプトに表示されて、結果のグラフがpingファイルとして生成されます。
+添付のスクリプトを改良することで様々なプログラムを作成できます。添付のスクリプトの関数にコメントで解説をつけたので参考にして下さい。それぞれの関数のマニュアルは、今後何らかの形で整備していきます。
+
+When you double-click this software to start it, a small window with a display window and two buttons will appear. Select a script using the upper button, and execute the script processing using the lower button.The execution process is displayed in the command prompt and the resulting graph is generated as a ping file.
+You can create various programs by improving the attached script. Please refer to the attached script functions as they are explained in comments. I will develop manuals for each function in some form in the future.
+
+
+　このソフトウェアはそのままの複製を学習や研究を目的として利用する場合に限り、フリーに使ってもらえます。
+それ以外の以下のケースなどは、ライセンス記述にあるアドレス(bunpu@a1.rim.or.jp)に相談ください。
+個別のニーズへの対応は、主に法人を対象として行います。
+メールに対する回答は、その要否や期限についてこちらで判断させていただきます。
+(3)~(6)は有償でライセンス契約を締結することが前提となります。
+
+- 本技術に対するご意見、間違いや改善の提案。(1)
+- 本技術を活用する為のコンサルティング、説明、講演などが必要な場合。(2)
+- それぞれのニーズにあわせて本技術を応用するためのツールカスタマイズ。(3)
+- 本技術を利用したモノやサービスを産業活動（商用）として行う場合(4)
+ （検討や試行での利用は自由です）。
+- 本技術の関数スクリプト(python)を入手・参考にして自由度の高い活用を行う。(5)
+- 本技術を参考にして類似のソフトウェアを開発・配布する場合。(6)
+
+This software may be used free of charge only if you use an exact copy for educational or research purposes.
+For other cases such as those listed below, please contact the address(bunpu@a1.rim.or.jp) listed in the license description.
+We respond to individual needs primarily for corporations.
+We will decide whether or not a response to the email is necessary and the deadline.
+For (3) to (6) are subject a fee-based license agreement must be concluded.
+
+- Opinions, mistakes and suggestions for improvement regarding this technology. (1)
+- If consulting, explanations, lectures, etc. are required to utilize this technology. (2)
+- Tool customization to apply this technology to suit each individual's needs. (3)
+- When products and services using this technology are carried out as industrial activities (commercial) (4)
+  (You are free to use it for reviewing or trial use.)
+- Get or refer to the function script (python) of this technology and use it with a high degree of freedom.(5)
+- When developing and distributing similar software using this technology as a reference. (6)
+
+
+# 注意事項/notes
+
+　この手法の欠点は、分布をマトリックスとして演算するので、分布を細かく分割（サンプリング）したり、多次元化や多数の分布を扱うシミュレーションを行うとメモリー使用量が膨大になってメモリーエラーを起こす可能性があります。かと言って分布の分割を荒くすると、結果の誤差が大きくなるので、エラーを起こさない範囲で分割を細かくする必要があります。このbunpu3のソフトの方がbunpu2と比べてメモリーエラーを起こしにくく大きいマトリックスを扱えます。bunpu3はpythonのライブラリとして機能するので、こちらの利用を推奨します。
 今後、様々な並列処理などを活用して大きなマトリックスを扱えるように改善したいと思いますが、みなさんもメモリーに余裕があるパソコンを利用してください。
 
- If several parameters have variations and the distribution shape (histogram, etc.) is known, the distribution shape of the calculation result can be precisely calculated. Only then can we determine the probability of a phenomenon or design occurring. I provide a calculation tool for this purpose.
-Even if the distribution shape is unclear but there is data, this tool can convert the data into a distribution (histogram-based kernel distribution), but if there is little data, errors will remain in the distribution shape. The errors are the same as when using existing methods that handle data and handle little data. Methods that assume normal distributions such as standard deviation or function distributions have errors because they cannot reflect the characteristics of the distribution shape of the actual data. If the shape of distribution is far from normal distribution, the error will be large, and if there are several such variations in the model, the error will be even greater. In other words, in order to improve quality, I believe that it is necessary to correctly grasp the distribution shapes of various parameters and design a model that can take that distribution shape into account. This method can grasp all parameters in the calculation process as distributions, so it can calculate various phenomena as probability values.
-
-The drawback of this method is that it calculates the distribution as a matrix, so if you divide the distribution finely or perform a simulation that handles multi-dimensionality or a large number of distributions, the memory usage can become enormous, which can lead to memory errors. However, if the distribution is divided too roughly, the error in the results will increase, so it is necessary to divide it finely as long as errors do not occur. bunpu3 is less likely to cause memory errors and can handle larger matrices than this bunpu2 software. Since bunpu3 functions as a python library, we recommend using it.
+The drawback of this method is that it calculates the distribution as a matrix, so if you divide the distribution finely or perform a simulation that handles multi-dimensionality or a large number of distributions, the memory usage can become enormous, which can lead to memory errors. However, if the distribution is divided too roughly, the error in the results will increase, so it is necessary to divide it finely as long as errors do not occur. Compared to bunpu2, the bunpu3 software is less prone to memory errors and can handle larger matrices. Since bunpu3 functions as a python library, we recommend using it.
 In the future, we would like to improve it so that it can handle large matrices by utilizing various parallel processing methods, but we recommend that you use a computer with plenty of memory.
-
 
 　ここでは“バラツキの対処法 ～品質を最大限に引き出す数学～”の出版以降に作成したソフトを公開します。
 出版前に公開したソフトは下記のアドレスで公開しています。
@@ -38,15 +101,6 @@ Here, I will release the software that I created after publishing "Baratsuki no 
 Software released before publication is available at the address below.
 
 - https://github.com/skoike/bunpu
-
-ソフト比較と使い方/Software comparison and how to use
-- https://www.youtube.com/watch?v=pnTQOt4HYwg
-
-バラツキの対処法、概要と応用例/How to deal with variance, overview and application examples
-- https://www.youtube.com/watch?v=YHU92qjDdDA&t=0s  
-
-バラツキの対処法、数学における位置づけ/How to deal with variance, Position in mathematics
-- https://www.youtube.com/watch?v=bGJhkxFb-2M&t=0s
 
 ソフトの置き場/Software storage
 
@@ -79,94 +133,9 @@ I replaced the loop processing that was frequently used in the function algorith
 Simulations can be performed using a new algorithm that allows users to create multi-dimensional (1-3 dimensional) and multi-order integrals by creating function programs.(Currently, only line integrals are available, and functions for area integrals such as field analysis will be added in the future. Memory errors due to large matrices are an issue.)
 Regardless of which software you use, it is assumed that you understand Gijutsu Hyoronsha's "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)".
 
-このソフトを起動すると表示窓とボタンが２つの小さなウィンドウが立ち上がります。上のボタンでスクリプトを選択して、下のボタンでスクリプトの処理が実行されます。
-実行過程はコマンドプロンプトに表示されて、結果のグラフがpingファイルとして生成されます。
-添付のスクリプトを改良することで様々なプログラムを作成できます。添付のスクリプトの関数にコメントで解説をつけたので参考にして下さい。それぞれの関数のマニュアルは、今後何らかの形で整備していきます。
+　## ライセンス
 
-When you double-click this software to start it, a small window with a display window and two buttons will appear. Select a script using the upper button, and execute the script processing using the lower button.The execution process is displayed in the command prompt and the resulting graph is generated as a ping file.
-You can create various programs by improving the attached script. Please refer to the attached script functions as they are explained in comments. I will develop manuals for each function in some form in the future.
-
-　このソフトウェアはそのままの複製を学習や研究を目的として利用する場合に限り、フリーに使ってもらえます。
-それ以外の以下のケースなどは、ライセンス記述にあるアドレスに相談ください。
-個別のニーズへの対応は、主に法人を対象として行います。
-メールに対する回答は、その要否や期限についてこちらで判断させていただきます。
-(3)~(6)はライセンス契約を締結することが前提となります。
-
-- 本技術に対するご意見、間違いや改善の提案。(1)
-- 本技術を活用する為のコンサルティング、説明、講演などが必要な場合。(2)
-- それぞれのニーズにあわせて本技術を応用するためのツールカスタマイズ。(3)
-- 本技術を利用したモノやサービスを産業活動（商用）として行う場合(4)
- （検討や試行での利用は自由です）。
-- 本技術の関数スクリプト(python)を入手・参考にして自由度の高い活用を行う。(5)
-- 本技術を参考にして類似のソフトウェアを開発・配布する場合。(6)
-
-
-This software may be used free of charge only if you use an exact copy for educational or research purposes.
-For other cases such as those listed below, please contact the address listed in the license description.
-We respond to individual needs primarily for corporations.
-We will decide whether or not a response to the email is necessary and the deadline.
-For (3) to (6) a license agreement must be concluded.
-
-
-- Opinions, mistakes and suggestions for improvement regarding this technology. (1)
-- If consulting, explanations, lectures, etc. are required to utilize this technology. (2)
-- Tool customization to apply this technology to suit each individual's needs. (3)
-- When products and services using this technology are carried out as industrial activities (commercial) (4)
-  (You are free to use it for reviewing or trial use.)
-- Get or refer to the function script (python) of this technology and use it with a high degree of freedom.(5)
-- When developing and distributing similar software using this technology as a reference. (6)
-
-
-Windows10、Windows11それぞれの環境でコンパイルしたものを用意しました。
-まだ、開発途上なので、全ての演算を精度良くカバーできているわけではありません。
-現状では起動や演算に時間がかかるので、お待ちください。
-
-I have prepared versions compiled for Windows10 and Windows11 environments.
-Since it is still under development, it does not cover all calculations with high accuracy.
-Currently, it takes time to start up and calculate, so please wait.
-
-- Windows10用→bunpu2_win10.exe
-- Windows11用→bunpu2_win11.exe
-
-その他csvファイルがありますが、これは上記ツールで練習用に使うダミーデータです。
-使い方は“バラツキの対処法”を参照ください。
-
-There are some csv files, this is dummy data used for practice with the above tools.
-Please refer to "Baratsuki no taisyohou (How to deal with variance - Mathematics to maximize quality)" for how to use it.
-
-現時点でこのツールは、以下のことが可能である。
-
-- データファイルの特定列から抽出したデータのヒストグラムとカーネル分布を生成
-- 範囲や平均値、標準偏差を指定して分布を生成
-- 前記生成された分布間の四則演算や時系列積分（シミュレーション）
-- 前記時系列積分において、所定距離以内に接近する確率演算
-- 前記生成された分布間の関係を確率的に比較
-- 分布のグラフ表示
-- 分布要素をファイル出力
-- 以上の1次元から3次元のベクトル分布処理
-
-ライセンスは、このソフトをそのまま利用するだけであればフリー、ソフトの変更や参考にして作成したものの配布や商用利用する場合は知財権利と著作権にご配慮ください。
-
-
-At the moment this tool can:
-
-- Generate a distribution from the histogram of the measured data
-- Generate distribution by specifying range, mean, and standard deviation
-- Four arithmetic operations between generated distributions and time series integral
-- In the time series integration, probability calculation of approaching within a predetermined distance
-- Probabilistically compare the relationship between the generated distributions
-- Graph display of distribution
-- Output distribution elements to a file
-- 1D to 3D vector distribution processing above all
-
-The license is free if you just use it as it is, If you change or use this soft as reference for a distribution or commercial purposes,
-you should respond to your obligations for the intellectual property rights and the copyright of this software.
-
-
-
-## ライセンス
-
-© 2020-2024 Shin Koike  bunpu@a1.rim.or.jp
+© 2020-2025 Shin Koike  bunpu@a1.rim.or.jp
 
 このソフトウェアをそのままの複製を学習や研究を目的として利用する場合、本ソフトウェアおよび今後作成されるものを含めたそのブランチの利用を無償で許可します。
 
@@ -189,7 +158,7 @@ you should respond to your obligations for the intellectual property rights and 
 
 ## License
 
-© 2020-2024 Shin Koike  bunpu@a1.rim.or.jp
+© 2020-2025 Shin Koike  bunpu@a1.rim.or.jp
 
 Permission is hereby granted, free of charge, to any person obtaining a exact copy of this software,
 its branches and associated documentation files (the "Software"),for learning or research purposes, to deal in the Software with restriction.
