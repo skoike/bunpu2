@@ -21,16 +21,16 @@ To accurately extract information hidden in such distribution shapes, this tool 
 # 説明動画/Explanation Video
 
 このソフトが実現する技術の内容/The technology realized by this software
-japanese
 - https://youtu.be/_YVu-couIDc
-english
+Japanese
 - https://youtu.be/mxFAEyypfWM
+English
 
 分布形状を演算することで可能になる判断指標/Judgment indices made possible by calculating distribution shapes
-Japanese
 - https://youtu.be/94UskYTy4R8
-english
+Japanese
 - https://youtu.be/I5eB3Mt8dh4
+English
 
 ソフト比較と使い方/Software comparison and how to use
 - https://www.youtube.com/watch?v=pnTQOt4HYwg
