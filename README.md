@@ -65,6 +65,22 @@ Please refer to the video on how to use it.
 When you double-click this software to start it, a small window with a display window and two buttons will appear. Select a script using the upper button, and execute the script processing using the lower button.The execution process is displayed in the command prompt and the resulting graph is generated as a ping file.
 You can create various programs by improving the attached script. Please refer to the attached script functions as they are explained in comments. I will develop manuals for each function in some form in the future.
 
+関数（メソッド）一覧表を作成しました。サンプルスクリプトと合わせてみることで、みなさんの用途に合わせたスクリプトを作成してください。
+一部の関数は、このbunpu2のソフトに組み込まれていません、bunpu3のリポジトリにあるソフトは全ての関数が利用できます。
+
+- 関数一覧  bunpu_function.pdf
+- script2.py 1~3次元の演算例
+- script4.py 3次元ミサイル撃墜シミュレーション
+- script10.py 車間距離制御シミュレーション
+
+I have created a list of functions (methods). By combining it with the sample scripts, you can create your own scripts for your own purposes.
+Some functions are not built into this bunpu2 software, all functions are available for software in the bunpu3 repository.
+
+- List of functions bunpu_function.pdf
+- script2.py 1~3 dimensional arithmetic examples
+- script4.py 3D missile shoot down simulation
+- script10.py Distance control simulation
+
 
 　このソフトウェアはそのままの複製を学習や研究を目的として利用する場合に限り、フリーに使ってもらえます。
 それ以外の以下のケースなどは、ライセンス記述にあるアドレス(bunpu@a1.rim.or.jp)に相談ください。
