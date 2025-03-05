@@ -71,7 +71,7 @@ You can create various programs by improving the attached script. Please refer t
 関数（メソッド）一覧表を作成しました。サンプルスクリプトと合わせてみることで、みなさんの用途に合わせたスクリプトを作成してください。
 一部の関数は、このbunpu2のソフトに組み込まれていません、bunpu3のリポジトリにあるソフトは全ての関数が利用できます。
 
-- 関数一覧  bunpu_function.pdf
+- 関数一覧  bunpu_function.pdf(一部関数は使えない)
 - script2.py 1~3次元の演算例
 - script4.py 3次元ミサイル撃墜シミュレーション
 - script10.py 車間距離制御シミュレーション
@@ -79,7 +79,7 @@ You can create various programs by improving the attached script. Please refer t
 I have created a list of functions (methods). By combining it with the sample scripts, you can create your own scripts for your own purposes.
 Some functions are not built into this bunpu2 software, all functions are available for software in the bunpu3 repository.
 
-- List of functions bunpu_function.pdf
+- List of functions bunpu_function.pdf (Some functions are not available)
 - script2.py 1~3 dimensional arithmetic examples
 - script4.py 3D missile shoot down simulation
 - script10.py Distance control simulation
