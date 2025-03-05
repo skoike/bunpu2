@@ -26,6 +26,12 @@ Japanese
 - https://youtu.be/mxFAEyypfWM
 English
 
+バラツキを分布として扱う最初のステップ/First step in treating variability as a distribution
+- https://youtu.be/mEFbHGVyfww
+Japanese
+- https://youtu.be/FXdJSbOxZX0
+English
+
 分布形状を演算することで可能になる判断指標/Judgment indices made possible by calculating distribution shapes
 - https://youtu.be/94UskYTy4R8
 Japanese
