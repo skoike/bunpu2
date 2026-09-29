@@ -18,7 +18,7 @@ voa = bunpu()
 fmax = 1480
 fmin.bunpu_gene([-3240],[-2400],[-2800],[100],[50])
 #レーダー検出距離データ
-dtdist.bunpu_data('fdetect.csv','ditect',1,[7],[50])
+dtdist.bunpu_data('fdetect.csv',1,[7],[50])
 #先行車速度分布
 voa.bunpu_gene([54],[64],[60],[1.5],[20])
 #初期速度

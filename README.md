@@ -52,13 +52,12 @@ English
 
 # 使い方/way to use
 　
-Windows10、Windows11それぞれの環境でコンパイルしたものを用意しました。
+Windows11の環境でコンパイルしたものを用意しました。
 現状では起動や演算に時間がかかるので、お待ちください。
 
-I have prepared versions compiled for Windows10 and Windows11 environments.
+I have prepared versions compiled for Windows11 environments.
 Currently, it takes time to start up and calculate, so please wait.
 
-- Windows10用→bunpu2_win10.exe
 - Windows11用→bunpu2_win11.exe
 
 その他csvファイルがありますが、これは上記ツールで練習用に使うダミーデータです。
